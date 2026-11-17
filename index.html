@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Make a Wish ✨ Happy Birthday</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="aurora"></div>
+    <div id="petals-container"></div>
+
+    <!-- Stage 1 & 2: Surprise invitation & Letter -->
+    <main class="experience-shell">
+        <section id="welcome-screen" class="experience-screen welcome-screen glass">
+            <div class="welcome-decor welcome-decor-one">✦</div>
+            <div class="welcome-decor welcome-decor-two">♡</div>
+            <p class="eyebrow">A little something for you</p>
+            <div class="welcome-illustration" aria-hidden="true">🎁</div>
+            <h1 class="screen-title">Margaret, are you ready<br>for a surprise?</h1>
+            <p class="screen-copy">I made something just for you. But first...</p>
+            <div class="choice-buttons">
+                <button id="yes-btn" class="btn yes-btn" type="button">YES! 💜</button>
+                <button id="no-btn" class="btn btn-ghost no-btn" type="button">NO 🙈</button>
+            </div>
+            <p class="tiny-note">Choose wisely 😉</p>
+        </section>
+
+        <section id="letter-screen" class="experience-screen glass" hidden>
+            <p class="eyebrow">A birthday note, just for you</p>
+            <h1 class="screen-title">A little letter for Margaret</h1>
+            <button id="envelope-btn" class="envelope-button" type="button" aria-label="Open your birthday letter">
+                <span class="envelope-heart">♥</span>
+                <span class="envelope">
+                    <span class="envelope-flap"></span>
+                    <span class="envelope-paper"><span>For Margaret</span></span>
+                    <span class="envelope-front"></span>
+                </span>
+                <span class="envelope-hint">Tap the envelope to open 💌</span>
+            </button>
+            <article id="letter-content" class="letter-content" aria-live="polite" hidden>
+                <p id="typed-message"></p>
+                <p class="letter-signature">With lots of love,<br>Your best friend 💜</p>
+            </article>
+            <button id="continue-btn" class="btn continue-btn" type="button" hidden>Let's celebrate! 🎂</button>
+        </section>
+    </main>
+
+    <!-- Stage 3: Birthday Cake -->
+    <main class="main-container" id="main-container" style="display: none;">
+        <header class="header">
+            <div class="title-wrapper">
+                <h1 class="title" id="main-title">Happy 25th Birthday,<br>Margaret!</h1>
+                <span class="crown">👑</span>
+            </div>
+        </header>
+
+        <div class="scene-wrapper">
+            <div class="cake-container">
+                <div class="cake-scene">
+                    <div class="cake-bottom"></div>
+                    <div class="cake-body"></div>
+                    <div class="frosting-wrapper">
+                        <div class="frosting-drips">
+                            <div class="drip" style="left: 10px; width: 25px; height: 40px;"></div>
+                            <div class="drip" style="left: 30px; width: 35px; height: 60px;"></div>
+                            <div class="drip" style="left: 60px; width: 40px; height: 35px;"></div>
+                            <div class="drip" style="left: 95px; width: 35px; height: 80px;"></div>
+                            <div class="drip" style="left: 125px; width: 45px; height: 50px;"></div>
+                            <div class="drip" style="left: 165px; width: 35px; height: 90px;"></div>
+                            <div class="drip" style="left: 195px; width: 45px; height: 45px;"></div>
+                            <div class="drip" style="left: 235px; width: 35px; height: 75px;"></div>
+                            <div class="drip" style="left: 265px; width: 45px; height: 40px;"></div>
+                        </div>
+                        <div class="cake-top" id="cake-top">
+                            <div id="candles-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass action-panel">
+            <p id="status-msg" class="status-msg">Make a wish! 🕯️</p>
+            <div class="btn-row">
+                <button id="mic-btn" class="btn">🎤 Allow Mic</button>
+                <button id="reset-btn" class="btn btn-ghost">↺ Reset</button>
+            </div>
+        </div>
+        <p class="footer">Made with 💗 just for you, Margaret</p>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
