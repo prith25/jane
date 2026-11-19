@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const continueBtn      = document.getElementById('continue-btn');
 
     // Target unlock time: 19 Nov 2026, 21:00 (9:00 PM) IST (+05:30)
-    const UNLOCK_TIMESTAMP = new Date('2026-11-19T21:00:00+05:30').getTime();
+    const UNLOCK_TIMESTAMP = new Date('2026-11-19T21:05:00+05:30').getTime();
 
     const LETTER_TEXT = "Happy 25th Birthday, Margaret! 💜\n\nI hope your day is filled with laughter, lovely surprises, good food, and all the little things that make you happy. Thank you for being such a wonderful best friend.\nI may not be able to fix all the things in your life, but I will stay with you until you feel lighter.";
 
