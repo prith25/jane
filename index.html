@@ -6,7 +6,7 @@
     <title>Make a Wish ✨ Happy Birthday</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,7 +21,31 @@
             <p class="eyebrow">A little something for you</p>
             <div class="welcome-illustration" aria-hidden="true">🎁</div>
             <h1 class="screen-title">Margaret, are you ready<br>for a surprise?</h1>
-            <p class="screen-copy">I made something just for you. But first...</p>
+            <p class="screen-copy">But first... wait till 27 Nov 10:00</p>
+
+            <!-- Countdown Timer (revealed on clicking YES) -->
+            <div id="countdown-wrapper" class="countdown-wrapper" aria-live="polite" hidden>
+                <p class="countdown-label">Unlocking your surprise in...</p>
+                <div class="countdown-grid">
+                    <div class="countdown-box">
+                        <span id="cd-days" class="countdown-num">00</span>
+                        <span class="countdown-unit">Days</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="cd-hours" class="countdown-num">00</span>
+                        <span class="countdown-unit">Hours</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="cd-minutes" class="countdown-num">00</span>
+                        <span class="countdown-unit">Mins</span>
+                    </div>
+                    <div class="countdown-box">
+                        <span id="cd-seconds" class="countdown-num">00</span>
+                        <span class="countdown-unit">Secs</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="choice-buttons">
                 <button id="yes-btn" class="btn yes-btn" type="button">YES! 💜</button>
                 <button id="no-btn" class="btn btn-ghost no-btn" type="button">NO 🙈</button>
