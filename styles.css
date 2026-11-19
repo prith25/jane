@@ -378,6 +378,7 @@ body{
     gap: clamp(.75rem, 2vh, 1.15rem);
     text-align: center;
     animation: fadeUp .7s ease-out both;
+    transition: all .35s ease;
 }
 .experience-screen[hidden] { display: none !important; }
 .eyebrow {
@@ -416,6 +417,61 @@ body{
 }
 .welcome-decor-one { top: 10%; left: 10%; font-size: 1.7rem; }
 .welcome-decor-two { right: 10%; bottom: 14%; font-size: 2.1rem; }
+
+/* ═══ COUNTDOWN TIMER ═══ */
+.countdown-wrapper {
+    width: 100%;
+    max-width: 340px;
+    padding: .85rem .9rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(253, 233, 162, 0.28);
+    box-shadow: 0 10px 26px rgba(15, 4, 28, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    animation: timerReveal .45s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes timerReveal {
+    from { opacity: 0; transform: translateY(-10px) scale(.96); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.countdown-label {
+    font-size: .72rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: #ffd2e5;
+    margin-bottom: .55rem;
+}
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .45rem;
+}
+.countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem .25rem;
+    border-radius: 12px;
+    background: rgba(26, 8, 40, 0.55);
+    border: 1px solid rgba(255, 180, 210, 0.2);
+}
+.countdown-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.25rem, 4.4vw, 1.65rem);
+    font-weight: 500;
+    color: #fde9a2;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 14px rgba(253, 233, 162, 0.3);
+}
+.countdown-unit {
+    margin-top: .2rem;
+    font-size: .62rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: rgba(255, 220, 235, 0.72);
+}
+
 .choice-buttons {
     display: flex;
     align-items: center;
@@ -425,6 +481,7 @@ body{
     width: 100%;
     min-height: 54px;
     margin-top: .25rem;
+    transition: transform .35s ease;
 }
 .choice-buttons .btn { min-width: 112px; min-height: 44px; justify-content: center; transition: transform .25s ease, opacity .25s ease; }
 .yes-btn { transform-origin: center; }
@@ -522,13 +579,15 @@ body{
     font-size: clamp(.92rem, 2.6vw, 1.05rem);
     letter-spacing: 0.015em;
     line-height: 1.68;
-    white-space: pre-wrap;
     overflow: visible;
+}
+#typed-message {
+    white-space: pre-wrap;
 }
 #typed-message::first-line {
     font-family: 'Great Vibes', cursive;
     font-style: normal;
-    font-size: clamp(1.55rem, 5vw, 1.95rem);
+    font-size: clamp(1.35rem, 4.4vw, 1.95rem);
     color: #fde9a2;
     text-shadow: 0 2px 12px rgba(253, 233, 162, 0.28);
 }
@@ -560,6 +619,8 @@ body{
         border-radius: 18px;
     }
     .screen-title { font-size: clamp(2rem, 8.8vw, 2.75rem); }
+    .countdown-wrapper { padding: .7rem .65rem; }
+    .countdown-grid { gap: .35rem; }
     .letter-content {
         padding: .95rem 1.05rem;
         font-size: .88rem;
