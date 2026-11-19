@@ -21,19 +21,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let customAge = '25';
 
     // --- MARGARET'S BIRTHDAY EXPERIENCE ---
-    const welcomeScreen = document.getElementById('welcome-screen');
-    const letterScreen  = document.getElementById('letter-screen');
-    const yesBtn        = document.getElementById('yes-btn');
-    const noBtn         = document.getElementById('no-btn');
-    const envelopeBtn   = document.getElementById('envelope-btn');
-    const letterContent = document.getElementById('letter-content');
-    const typedMessage  = document.getElementById('typed-message');
-    const continueBtn   = document.getElementById('continue-btn');
+    const welcomeScreen    = document.getElementById('welcome-screen');
+    const letterScreen     = document.getElementById('letter-screen');
+    const yesBtn           = document.getElementById('yes-btn');
+    const noBtn            = document.getElementById('no-btn');
+    const countdownWrapper = document.getElementById('countdown-wrapper');
+    const cdDays           = document.getElementById('cd-days');
+    const cdHours          = document.getElementById('cd-hours');
+    const cdMinutes        = document.getElementById('cd-minutes');
+    const cdSeconds        = document.getElementById('cd-seconds');
+    const envelopeBtn      = document.getElementById('envelope-btn');
+    const letterContent    = document.getElementById('letter-content');
+    const typedMessage     = document.getElementById('typed-message');
+    const continueBtn      = document.getElementById('continue-btn');
 
-    const LETTER_TEXT = "Happy 25th Birthday, Margaret! 💜\n\nI hope your day is filled with laughter, lovely surprises, good food, and all the little things that make you happy. Thank you for being such a wonderful best friend. Here’s to another year of memories, adventures, and ridiculous laughs. You deserve the very best. Have the happiest birthday! 🎂✨";
+    // Target unlock time: 19 Nov 2026, 21:00 (9:00 PM) IST (+05:30)
+    const UNLOCK_TIMESTAMP = new Date('2026-11-19T21:00:00+05:30').getTime();
+
+    const LETTER_TEXT = "Happy 25th Birthday, Margaret! 💜\n\nI hope your day is filled with laughter, lovely surprises, good food, and all the little things that make you happy. Thank you for being such a wonderful best friend.\nI may not be able to fix all the things in your life, but I will stay with you until you feel lighter.";
 
     let noClicks = 0;
     let typingTimer = null;
+    let countdownInterval = null;
     let letterOpened = false;
 
     document.title = "A Birthday Surprise for Margaret 💜";
@@ -88,8 +97,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function padZero(num) {
+        return String(num).padStart(2, '0');
+    }
+
+    function updateCountdown() {
+        const now = Date.now();
+        const diff = UNLOCK_TIMESTAMP - now;
+
+        if (diff <= 0) {
+            clearInterval(countdownInterval);
+            countdownInterval = null;
+            cdDays.textContent = '00';
+            cdHours.textContent = '00';
+            cdMinutes.textContent = '00';
+            cdSeconds.textContent = '00';
+            showStage('letter');
+            return;
+        }
+
+        const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        cdDays.textContent    = padZero(days);
+        cdHours.textContent   = padZero(hours);
+        cdMinutes.textContent = padZero(minutes);
+        cdSeconds.textContent = padZero(seconds);
+    }
+
     yesBtn.addEventListener('click', () => {
-        showStage('letter');
+        if (Date.now() >= UNLOCK_TIMESTAMP) {
+            showStage('letter');
+            return;
+        }
+
+        // Reveal timer above the YES/NO buttons and start ticking
+        countdownWrapper.hidden = false;
+        updateCountdown();
+
+        if (!countdownInterval) {
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
     });
 
     noBtn.addEventListener('click', () => {
